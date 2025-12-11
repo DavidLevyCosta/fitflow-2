@@ -1,6 +1,7 @@
 import { ExerciseCard } from 'components/ExerciseCard';
 import { Exercise, useExercisesDatabase } from 'database/useExercisesDatabase'
-import { useEffect, useState } from 'react';
+import { useFocusEffect } from 'expo-router';
+import { useCallback, useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 import { View } from 'tamagui'
 
@@ -18,9 +19,11 @@ export default function SelectorScreen() {
     }
   }
 
-  useEffect(() => {
-    list();
-  }, [])
+  useFocusEffect(
+    useCallback(() => {
+      list();
+    }, [])
+  );
 
   return (
     <View flex={1} items="center" justify="center" bg="$background">

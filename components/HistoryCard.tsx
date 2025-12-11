@@ -1,8 +1,14 @@
 import { Repeat, Timer, Weight } from "@tamagui/lucide-icons";
 import { ExerciseHistoryWithName } from "database/useExercisesDatabase";
+import { useEffect } from "react";
 import { Card, Stack, Text, XStack, YStack } from "tamagui";
 
 export function HistoryCard(history: ExerciseHistoryWithName) {
+
+  useEffect(() => {
+
+  }, [history])
+
   return (
     <Card elevate bordered width="100%">
       <YStack p="$5" gap="$4">
@@ -21,15 +27,15 @@ export function HistoryCard(history: ExerciseHistoryWithName) {
         <XStack justify="space-between" items="center" flexWrap="wrap">
           <Stack flexWrap="wrap" justify="center" items="center" flexDirection="row">
             <Repeat size="$1" />
-            <Text fontSize="$3"> ~ {history.executionRepetition} </Text>
+            <Text fontSize="$3"> ~ {Math.round(history.executionRepetition)} </Text>
           </Stack>
           <Stack flexWrap="wrap" justify="center" items="center" flexDirection="row">
             <Weight size="$1" />
-            <Text fontSize="$3"> ~ {history.executionWeight} </Text>
+            <Text fontSize="$3"> ~ {Math.round(history.executionWeight)} </Text>
           </Stack>
           <Stack flexWrap="wrap" justify="center" items="center" flexDirection="row">
             <Timer size="$1" />
-            <Text fontSize="$3"> ~ {history.executionTime / 1000} </Text>
+            <Text fontSize="$3"> ~ {Math.round(history.executionTime / 1000)} </Text>
           </Stack>
         </XStack>
       </YStack>
